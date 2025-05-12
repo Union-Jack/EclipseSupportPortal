@@ -1,7 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
-from EclipseSupportPortal.models import user_model
 
 class LoginForm(FlaskForm):
         username = StringField(validators=[InputRequired(), Length(

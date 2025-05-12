@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
-from EclipseSupportPortal.models import user_model
+from EclipseSupportPortal.models.user_model import UserModel
 
 class RegisterForm(FlaskForm):
         username = StringField(validators=[InputRequired(), Length(
@@ -12,7 +12,7 @@ class RegisterForm(FlaskForm):
         submit = SubmitField("Register")
 
         def validate_username(self, username):
-                existing_user_username = User.query.filter_by(
+                existing_user_username = UserModel.query.filter_by(
                         username=username.data).first()
 
                 if existing_user_username:
