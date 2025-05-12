@@ -25,7 +25,6 @@ def login():
 
         return render_template('login.html', form=form)
 
-
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
         form = RegisterForm()
