@@ -7,6 +7,10 @@
 </head>
 <body>
     <h1>You are logged in.</h1>
+
+        
+        <a href="{{ url_for('tickets.create_ticket') }}" class="btn btn-success">Create Ticket</a>
+
     <a href="{{url_for('auth.logout')}}"> Logout</a>
 </body>
 </html>

@@ -20,8 +20,11 @@ def create_app():
     login_manager.login_view = "auth.login"
 
     from EclipseSupportPortal.routes.authentication import auth
-    app.register_blueprint(auth)
+    from EclipseSupportPortal.routes.tickets import tickets
 
+    app.register_blueprint(auth)
+    app.register_blueprint(tickets)
+    
     return app
 
 @login_manager.user_loader

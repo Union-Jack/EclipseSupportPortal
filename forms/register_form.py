@@ -8,7 +8,7 @@ class RegisterForm(FlaskForm):
                 min=4, max=20)], render_kw={"placeholder": "Username"})       
         password = StringField(validators=[InputRequired(), Length(
                 min=4, max=20)], render_kw={"placeholder": "Password"})  
-        
+
         submit = SubmitField("Register")
 
         def validate_username(self, username):

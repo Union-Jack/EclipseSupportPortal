@@ -7,5 +7,5 @@ class LoginForm(FlaskForm):
                 min=4, max=20)], render_kw={"placeholder": "Username"})       
         password = StringField(validators=[InputRequired(), Length(
                 min=4, max=20)], render_kw={"placeholder": "Password"})  
-        
+
         submit = SubmitField("Login")
