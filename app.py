@@ -1,4 +1,4 @@
-from EclipseSupportPortal.__init__  import create_app
+from EclipseSupportPortal import create_app
 
 if __name__ == "__main__":
         port = int(os.environ.get("PORT",5000))
