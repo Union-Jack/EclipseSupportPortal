@@ -1,11 +1,11 @@
 from flask import Blueprint, render_template, redirect, url_for
 from flask_login import login_required, login_user, logout_user, current_user
 from flask_login import LoginManager
-from EclipseSupportPortal.models import user_model
-from EclipseSupportPortal.forms.register_form import RegisterForm
-from EclipseSupportPortal.forms.login_form import LoginForm
-from EclipseSupportPortal import db, bcrypt
-from EclipseSupportPortal.models.user_model import UserModel
+from models import user_model
+from forms.register_form import RegisterForm
+from forms.login_form import LoginForm
+from extensions import db, bcrypt
+from models.user_model import UserModel
 
 auth = Blueprint('auth', __name__) 
 

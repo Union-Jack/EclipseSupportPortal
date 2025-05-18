@@ -1,12 +1,6 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
-from flask_login import LoginManager
-from EclipseSupportPortal.models import user_model
-
-db = SQLAlchemy()
-bcrypt = Bcrypt()
-login_manager = LoginManager()
+from extensions import db, bcrypt, login_manager
+from models import user_model
 
 def create_app():
     app = Flask(__name__)
@@ -19,8 +13,8 @@ def create_app():
     login_manager.init_app(app)
     login_manager.login_view = "auth.login"
 
-    from EclipseSupportPortal.routes.authentication import auth
-    from EclipseSupportPortal.routes.tickets import tickets
+    from routes.authentication import auth
+    from routes.tickets import tickets
 
     app.register_blueprint(auth)
     app.register_blueprint(tickets)

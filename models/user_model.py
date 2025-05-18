@@ -1,5 +1,5 @@
 from flask_login import UserMixin
-from EclipseSupportPortal.__init__ import db
+from extensions import db
 from datetime import datetime
 
 class UserModel(db.Model, UserMixin):

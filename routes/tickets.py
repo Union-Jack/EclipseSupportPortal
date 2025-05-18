@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, redirect, url_for
 from flask_login import login_required, current_user
-from EclipseSupportPortal import db
-from EclipseSupportPortal.forms.ticket_form import TicketForm
-from EclipseSupportPortal.models.ticket_model import TicketModel
+from extensions import db
+from forms.ticket_form import TicketForm
+from models.ticket_model import TicketModel
 
 
 tickets = Blueprint('tickets', __name__) 
