@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import InputRequired, Length, ValidationError
 from EclipseSupportPortal.models.user_model import UserModel
 
@@ -8,7 +8,7 @@ class RegisterForm(FlaskForm):
                 min=4, max=20)], render_kw={"placeholder": "Username"})       
         password = StringField(validators=[InputRequired(), Length(
                 min=4, max=20)], render_kw={"placeholder": "Password"})  
-
+        admin = BooleanField("Admin")
         submit = SubmitField("Register")
 
         def validate_username(self, username):

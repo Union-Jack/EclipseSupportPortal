@@ -1,9 +1,13 @@
 from flask_login import UserMixin
 from EclipseSupportPortal.__init__ import db
+from datetime import datetime
 
 class UserModel(db.Model, UserMixin):
         __tablename__ = "user"
         id = db.Column(db.Integer, primary_key=True)
         username = db.Column(db.String(20), nullable=False, unique=True)
         password = db.Column(db.String(80), nullable=False)
+        admin = db.Column(db.Boolean, nullable=False, default=False)
+        date_created = db.Column(db.DateTime, nullable=False, default=datetime.now)
+        date_updated = db.Column(db.DateTime, nullable=False, default=datetime.now, onupdate=datetime.now)
         tickets_created = db.relationship('TicketModel', backref='author', lazy='dynamic', foreign_keys='TicketModel.author_id')
