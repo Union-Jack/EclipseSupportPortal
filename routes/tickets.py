@@ -34,3 +34,8 @@ def create_ticket():
     
     return render_template('create.html', form=form)
 
+@tickets.route('/tickets/<int:id>')
+@login_required
+def view_ticket(id):
+    ticket = TicketModel.query.get_or_404(id)
+    return render_template('view.html', ticket=ticket)

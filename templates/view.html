@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+    </head>
+    <body>
+        <div>
+            <h1>Ticket Details</h1>
+        </div>
+        <div>
+            <h2>{{ ticket.title }}</h2>
+            <div>
+                <span> {{ ticket.priority }} priority </span>
+                <span> {{ ticket.status }} </span>
+                <p> {{ ticket.description }} </p>
+                <p> Author: {{ ticket.author.username }}</p>
+                <p> Date Created: {{ ticket.date_created.strftime('%Y-%m-%d %H:%M') }}</p>
+                <p> Date Updated: {{ ticket.date_updated.strftime('%Y-%m-%d %H:%M') }} </p>
+            </div>
+        </div>
+        <div>
+            <a href="{{ url_for('tickets.tickets_list') }}">Back to List</a>
+        </div>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
