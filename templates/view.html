@@ -16,10 +16,11 @@
         <div>
             <h2>{{ ticket.title }}</h2>
             <div>
+                <p> Added By: {{ ticket.author.username }}</p>
                 <span> {{ ticket.priority }} priority </span>
+                <p> Assignee: {{ ticket.assignee.username }}</p>
                 <span> {{ ticket.status }} </span>
                 <p> {{ ticket.description }} </p>
-                <p> Author: {{ ticket.author.username }}</p>
                 <p> Date Created: {{ ticket.date_created.strftime('%Y-%m-%d %H:%M') }}</p>
                 <p> Date Updated: {{ ticket.date_updated.strftime('%Y-%m-%d %H:%M') }} </p>
             </div>

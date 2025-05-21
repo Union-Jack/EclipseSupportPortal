@@ -5,7 +5,9 @@ from wtforms.validators import InputRequired, Length, ValidationError, DataRequi
 class TicketForm(FlaskForm):
     title = StringField(validators=[DataRequired(),
         Length(max=100, message='Title must be less than 100 characters or less')])
+    assignee = SelectField("Assignee", coerce=int, default=0)
     description = TextAreaField(validators=[DataRequired()])
     priority = SelectField(validators=[DataRequired()],
         choices=[('Low'), ('Normal'), ('High'), ('Urgent'), ('Immediate')]) 
     submit = SubmitField("Submit Ticket")
+

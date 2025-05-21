@@ -12,4 +12,4 @@ class TicketModel(db.Model):
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.now)
     date_updated = db.Column(db.DateTime, nullable=False, default=datetime.now, onupdate=datetime.now)
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    assignee_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    assignee_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)

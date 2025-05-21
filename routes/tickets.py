@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from extensions import db
 from forms.ticket_form import TicketForm
 from models.ticket_model import TicketModel
+from models.user_model import UserModel
 from datetime import datetime
 
 tickets = Blueprint('tickets', __name__) 
@@ -22,16 +23,27 @@ def tickets_list():
 def create_ticket():
     form = TicketForm()
 
+    if current_user.admin:
+        form.assignee.choices = [(0, "")] + [(user.id, user.username) for user in UserModel.query.all()]
+    else:
+        form.assignee.choices = [(0, "")]
+    
     if form.validate_on_submit():
-            ticket = TicketModel(
-                title=form.title.data,
-                description=form.description.data,
-                priority=form.priority.data,
-                author=current_user
-            )
-            db.session.merge(ticket)
-            db.session.commit()
-            return redirect(url_for('tickets.tickets_list'))
+        assignee_id = None if form.assignee.data == 0 else form.assignee.data
+        ticket = TicketModel(
+            title=form.title.data,
+            description=form.description.data,
+            priority=form.priority.data,
+            author_id=current_user.id,
+            assignee_id=form.assignee.data
+        )
+        db.session.add(ticket)
+        db.session.commit()
+
+        return redirect(url_for('tickets.tickets_list'))
+
+    else: 
+        print(form.errors)
 
     return render_template('create.html', form=form)
 
@@ -47,11 +59,16 @@ def edit_ticket(id):
     ticket = TicketModel.query.get_or_404(id)
     form = TicketForm()
 
+    if current_user.admin:
+        form.assignee.choices = [(user.id, user.username) for user in UserModel.query.all()]
+    
     if form.validate_on_submit():
         ticket.title = form.title.data
         ticket.description = form.description.data
         ticket.priority = form.priority.data
         ticket.updated_at = datetime.now()
+        if current_user.admin:
+            ticket.assignee_id = form.assignee.data
 
         db.session.commit()
         
@@ -61,6 +78,8 @@ def edit_ticket(id):
         form.title.data = ticket.title
         form.description.data = ticket.description
         form.priority.data = ticket.priority
+        if current_user.admin:
+            form.assignee.data = ticket.assignee_id
 
     return render_template('edit.html', form=form, ticket=ticket)
 

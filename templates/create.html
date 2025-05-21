@@ -16,6 +16,17 @@
                 <span>{{ error }}</span>
                 {% endfor %}
             </div>
+            {% if current_user.admin %}
+            <div>
+                {{ form.assignee.label(class="form-label") }}
+                {{ form.assignee(class="form-control") }}
+                {% for error in form.assignee.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+                {{ form.assignee(hidden=True) }}
+            {% endif %}
             <div>
                 {{ form.description.label(class="form-label") }} 
                 {{ form.description(class="form-control", rows="5") }} 

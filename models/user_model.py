@@ -11,3 +11,4 @@ class UserModel(db.Model, UserMixin):
         date_created = db.Column(db.DateTime, nullable=False, default=datetime.now)
         date_updated = db.Column(db.DateTime, nullable=False, default=datetime.now, onupdate=datetime.now)
         tickets_created = db.relationship('TicketModel', backref='author', lazy='dynamic', foreign_keys='TicketModel.author_id')
+        tickets_assigned = db.relationship('TicketModel', backref='assignee', lazy='dynamic', foreign_keys='TicketModel.assignee_id')
