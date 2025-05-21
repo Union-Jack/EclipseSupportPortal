@@ -9,6 +9,9 @@
         <div>
             <h1>Ticket Details</h1>
             <a href="{{ url_for('tickets.edit_ticket', id=ticket.id) }}">Edit</a>
+            {% if current_user.admin %}
+            <a href="{{ url_for('tickets.delete_ticket', id=ticket.id) }}" onclick="return confirm('Are you sure you want to delete this ticket?');">Delete</a>
+            {% endif %}
         </div>
         <div>
             <h2>{{ ticket.title }}</h2>

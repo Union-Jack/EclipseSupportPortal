@@ -62,3 +62,16 @@ def edit_ticket(id):
         form.priority.data = ticket.priority
 
     return render_template('edit.html', form=form, ticket=ticket)
+
+@tickets.route('/tickets/<int:id>/delete', methods=['GET'])
+@login_required
+def delete_ticket(id):
+    #Need this so that regular users can't navigate to the delete url manually to delete tickets
+    if not current_user.admin:
+        return redirect(url_for('tickets.tickets_list'))
+
+
+    ticket = TicketModel.query.get_or_404(id)
+    db.session.delete(ticket)
+    db.session.commit()
+    return redirect(url_for('tickets.tickets_list'))

@@ -18,6 +18,9 @@
                     <p>Status: {{ ticket.status }}</p>
                     <a href="{{ url_for('tickets.view_ticket', id=ticket.id) }}">View</a>
                     <a href="{{ url_for('tickets.edit_ticket', id=ticket.id) }}">Edit</a>
+                    {% if current_user.admin %}
+                    <a href="{{ url_for('tickets.delete_ticket', id=ticket.id) }}" onclick="return confirm('Are you sure you want to delete this ticket?');">Delete</a>
+                    {% endif %}
                     <div>
                         <small>Created by: {{ ticket.author.username }} at {{ticket.date_created.strftime('%Y-%m-%d %H:%M') }}</small>
                     </div>
