@@ -1,9 +1,9 @@
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, request
 from flask_login import login_required, current_user
 from extensions import db
 from forms.ticket_form import TicketForm
 from models.ticket_model import TicketModel
-
+from datetime import datetime
 
 tickets = Blueprint('tickets', __name__) 
 
@@ -39,3 +39,26 @@ def create_ticket():
 def view_ticket(id):
     ticket = TicketModel.query.get_or_404(id)
     return render_template('view.html', ticket=ticket)
+
+@tickets.route('/tickets/<int:id>/edit', methods=['GET', 'POST'])
+@login_required
+def edit_ticket(id):
+    ticket = TicketModel.query.get_or_404(id)
+    form = TicketForm()
+
+    if form.validate_on_submit():
+        ticket.title = form.title.data
+        ticket.description = form.description.data
+        ticket.priority = form.priority.data
+        ticket.updated_at = datetime.now()
+
+        db.session.commit()
+        
+        return redirect(url_for('tickets.view_ticket', id=id))
+
+    elif request.method == 'GET':
+        form.title.data = ticket.title
+        form.description.data = ticket.description
+        form.priority.data = ticket.priority
+
+    return render_template('edit.html', form=form, ticket=ticket)

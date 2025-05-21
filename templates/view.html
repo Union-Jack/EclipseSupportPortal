@@ -8,6 +8,7 @@
     <body>
         <div>
             <h1>Ticket Details</h1>
+            <a href="{{ url_for('tickets.edit_ticket', id=ticket.id) }}">Edit</a>
         </div>
         <div>
             <h2>{{ ticket.title }}</h2>
