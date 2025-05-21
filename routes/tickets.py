@@ -2,7 +2,9 @@ from flask import Blueprint, render_template, redirect, url_for, request
 from flask_login import login_required, current_user
 from extensions import db
 from forms.ticket_form import TicketForm
+from forms.comment_form import CommentForm
 from models.ticket_model import TicketModel
+from models.comment_model import CommentModel
 from models.user_model import UserModel
 from datetime import datetime
 
@@ -54,7 +56,8 @@ def create_ticket():
 @login_required
 def view_ticket(id):
     ticket = TicketModel.query.get_or_404(id)
-    return render_template('view.html', ticket=ticket)
+    form = CommentForm() 
+    return render_template('view.html', ticket=ticket, form=form)
 
 @tickets.route('/tickets/<int:id>/edit', methods=['GET', 'POST'])
 @login_required
@@ -103,3 +106,39 @@ def delete_ticket(id):
     db.session.delete(ticket)
     db.session.commit()
     return redirect(url_for('tickets.tickets_list'))
+
+@tickets.route('/tickets/<int:ticket_id>/comment', methods=['POST'])
+@login_required
+def add_comment(ticket_id):
+    ticket = TicketModel.query.get_or_404(ticket_id)
+    form = CommentForm()
+    
+    if form.validate_on_submit():
+        comment = CommentModel(
+            content=form.content.data,
+            author=current_user,
+            ticket=ticket
+        )
+        db.session.add(comment)
+        db.session.commit()
+    
+    return redirect(url_for('tickets.view_ticket', id=ticket_id))
+
+@tickets.route('/tickets/<int:ticket_id>/comments/<int:comment_id>/edit', methods=['GET', 'POST'])
+@login_required
+def edit_comment(ticket_id, comment_id):
+    comment = CommentModel.query.get_or_404(comment_id)
+    
+    if comment.author != current_user:
+        flash("You can only edit your own comments.", "danger")
+        return redirect(url_for('tickets.view_ticket', id=ticket_id))
+
+    form = CommentForm(obj=comment)
+
+    if form.validate_on_submit():
+        comment.content = form.content.data
+        comment.date_updated = datetime.now() 
+        db.session.commit()
+        return redirect(url_for('tickets.view_ticket', id=ticket_id))
+
+    return render_template('edit_comment.html', form=form, ticket_id=ticket_id, comment=comment)
