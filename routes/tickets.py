@@ -31,7 +31,8 @@ def create_ticket():
             )
             db.session.merge(ticket)
             db.session.commit()
-    
+            return redirect(url_for('tickets.tickets_list'))
+
     return render_template('create.html', form=form)
 
 @tickets.route('/tickets/<int:id>')

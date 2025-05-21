@@ -10,7 +10,6 @@
         <a href="{{ url_for('tickets.create_ticket') }}">Create Ticket</a>
         {% if tickets %} 
             {%for ticket in tickets %}
-            <div>
                 <div>   
                     <h5>{{ ticket.title }}</h5>
                     <h6>Priority: {{ ticket.priority }}</h6>
@@ -29,7 +28,6 @@
         {% else %}
             <div>No tickets found.</div>
         {% endif %}
-    </div>    
         <a href="{{ url_for('auth.dashboard') }}"> Dashboard</a>
     </body>
 </html>
