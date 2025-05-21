@@ -9,5 +9,8 @@ class TicketForm(FlaskForm):
     description = TextAreaField(validators=[DataRequired()])
     priority = SelectField(validators=[DataRequired()],
         choices=[('Low'), ('Normal'), ('High'), ('Urgent'), ('Immediate')]) 
+    status = SelectField(validators=[DataRequired()],
+        choices=[('Open'), ('In Progress'), ('Resolved')]) 
+
     submit = SubmitField("Submit Ticket")
 

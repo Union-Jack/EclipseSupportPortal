@@ -19,12 +19,27 @@
             </div>
             {% if current_user.admin %}
             <div>
+                {{ form.status.label(class="form-label") }}
+                {{ form.status(class="form-control") }} 
+                {% for error in form.status.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+                {{ form.status(hidden=True) }}
+                <p><strong>Status:</strong> {{ ticket.status }}</p>
+            {% endif %}
+            {% if current_user.admin %}
+            <div>
                 {{ form.assignee.label(class="form-label") }}
                 {{ form.assignee(class="form-control") }}
                 {% for error in form.assignee.errors %}
                     <span>{{ error }}</span>
                 {% endfor %}
             </div>
+            {% else %}
+                {{ form.assignee(hidden=True) }}
+                <p><strong>Assignee:</strong> {{ ticket.assignee.username}}</p>
             {% endif %}
             <div>
                 {{ form.description.label(class="form-label") }}

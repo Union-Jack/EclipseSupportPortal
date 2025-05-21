@@ -13,12 +13,12 @@
                 <div>   
                     <h2>{{ ticket.title }}</h2>
                     <div>
-                        <small>Created by: {{ ticket.author.username }} at {{ticket.date_created.strftime('%Y-%m-%d %H:%M') }}</small>
+                        <small>Added By: {{ ticket.author.username }} on {{ ticket.date_created.strftime('%d %b %Y') }}. Updated: {{ ticket.date_updated.strftime('%d %b %Y') }}</small>
                     </div>
-                    <p> Assignee: {{ ticket.assignee.username }}</p>
+                    <p>Status: {{ ticket.status }}</p>
+                    <p>Assignee: {{ ticket.assignee.username }}</p>
                     <p>Priority: {{ ticket.priority }}<p>
                     <p>{{ ticket.description }}</p>
-                    <p>Status: {{ ticket.status }}</p>
                     <a href="{{ url_for('tickets.view_ticket', id=ticket.id) }}">View</a>
                     <a href="{{ url_for('tickets.edit_ticket', id=ticket.id) }}">Edit</a>
                     {% if current_user.admin %}

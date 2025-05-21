@@ -24,9 +24,11 @@ def create_ticket():
     form = TicketForm()
 
     if current_user.admin:
-        form.assignee.choices = [(0, "")] + [(user.id, user.username) for user in UserModel.query.all()]
+        form.assignee.choices = [(0, "")] + [(user.id, user.username) for user in UserModel.query.filter_by(admin=True).all()]
     else:
         form.assignee.choices = [(0, "")]
+    
+    form.status.data = "Open"
     
     if form.validate_on_submit():
         assignee_id = None if form.assignee.data == 0 else form.assignee.data
@@ -34,8 +36,9 @@ def create_ticket():
             title=form.title.data,
             description=form.description.data,
             priority=form.priority.data,
+            status=form.status.data,
             author_id=current_user.id,
-            assignee_id=form.assignee.data
+            assignee_id=assignee_id
         )
         db.session.add(ticket)
         db.session.commit()
@@ -60,15 +63,20 @@ def edit_ticket(id):
     form = TicketForm()
 
     if current_user.admin:
-        form.assignee.choices = [(user.id, user.username) for user in UserModel.query.all()]
-    
+        form.assignee.choices = [(0, "")] + [(user.id, user.username) for user in UserModel.query.filter_by(admin=True).all()]
+    else:
+        form.assignee.choices = [(0, "")]
+
     if form.validate_on_submit():
         ticket.title = form.title.data
         ticket.description = form.description.data
         ticket.priority = form.priority.data
         ticket.updated_at = datetime.now()
+
         if current_user.admin:
-            ticket.assignee_id = form.assignee.data
+            assignee_id = None if form.assignee.data == 0 else form.assignee.data
+            ticket.assignee_id = assignee_id
+            ticket.status = form.status.data
 
         db.session.commit()
         
