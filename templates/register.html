@@ -4,19 +4,40 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Register</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+        <script src="{{ url_for('static', filename='js/togglePassword.js') }}"></script>
     </head>
     <body>
-        <h1>Register Page</h1>
-        <form method="POST" action="">
-            {{ form.hidden_tag() }}
-            {{ form.username }}
-            {{ form.password }}
-            <label for="Admin">
-                {{ form.admin.label }}
-            </label>
-            {{ form.admin}}
-            {{ form.submit}}
-        </form>
-        <a href="{{ url_for('auth.login') }}">Already have an account? Log in.</a>
+        <div class="authFormWrapper" >
+            <form method="POST" action="" style="width: 500px;" class="authForm"> 
+                <div style="text-align: center; background-color: #4f6d84;" class="authFormHeader">
+                    <img src="{{ url_for('static', filename='images/logo300dark.png') }}" alt="Company Logo">
+                </div>
+                <h1 class="authHeaderText">Register</h1>
+                <div class= "authFormContent">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.username(class="form-control") }} 
+                    </div>
+                    <div class="input-group mb-3">
+                        {{ form.password(class="form-control", type="password", id="passwordField") }}
+                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+                    <div class="mb-3">
+                        {{ form.admin(class="form-check-input") }}
+                        {{ form.admin.label(class="form-check-label") }}
+                    </div>
+                    <div class="authFormFooter">
+                        <a href="{{ url_for('auth.login') }}">Already have an account? Log in.</a>
+                        {{ form.submit(class="btn auth-btn-primary") }}      
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     </body>
 </html>
