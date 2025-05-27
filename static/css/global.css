@@ -16,3 +16,9 @@
 .nav-link.text-danger:hover {
     color: #ffffff !important; 
 }
+
+.card {
+    width: 100%;
+    max-width: 600px; 
+    margin: auto; 
+}
