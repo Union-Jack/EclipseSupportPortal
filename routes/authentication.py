@@ -6,6 +6,7 @@ from forms.register_form import RegisterForm
 from forms.login_form import LoginForm
 from extensions import db, bcrypt
 from models.user_model import UserModel
+from flask import flash
 
 auth = Blueprint('auth', __name__) 
 
@@ -34,6 +35,9 @@ def register():
                 new_user = UserModel(username=form.username.data, password=hashed_password, admin=form.admin.data)
                 db.session.add(new_user)
                 db.session.commit()
+                
+                flash("Account created successfully.", "success")
+
                 return redirect(url_for('auth.login'))
 
         return render_template('register.html', form=form)

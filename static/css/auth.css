@@ -58,3 +58,9 @@
     visibility: hidden;  
     height: auto;       
 }
+
+.flash-message {
+    width: 500px; 
+    margin: 10px auto; 
+    font-size: 16px;
+}

@@ -10,7 +10,7 @@
         <script src="{{ url_for('static', filename='js/togglePassword.js') }}"></script>
     </head>
     <body>
-        <div class="authFormWrapper" >
+        <div class="authFormWrapper">
             <form method="POST" action="" style="width: 500px;" class="authForm"> 
                 <div style="text-align: center; background-color: #4f6d84;" class="authFormHeader">
                     <img src="{{ url_for('static', filename='images/logo300dark.png') }}" alt="Company Logo">
@@ -38,6 +38,18 @@
                     </div>
                 </div>
             </form>
+        </div>
+        <div>
+            {% with messages = get_flashed_messages(with_categories=True) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="flash-message alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     </body>
