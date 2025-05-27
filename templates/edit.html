@@ -1,63 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dashboard</title>
-    </head>
-    <body>
-        <h1>Edit Ticket</h1>
+c
+{% extends "base.html" %}
 
-        <form method="POST">
-            {{ form.hidden_tag() }}
-            <div>
-                {{ form.title.label(class="form-label") }}
-                {{ form.title(class="form-control") }} 
-                {% for error in form.title.errors %}
-                <span>{{ error }}</span>
-                {% endfor %}
-            </div>
-            {% if current_user.admin %}
-            <div>
-                {{ form.status.label(class="form-label") }}
-                {{ form.status(class="form-control") }} 
-                {% for error in form.status.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
-            </div>
-            {% else %}
-                {{ form.status(hidden=True) }}
-                <p><strong>Status:</strong> {{ ticket.status }}</p>
-            {% endif %}
-            {% if current_user.admin %}
-            <div>
-                {{ form.assignee.label(class="form-label") }}
-                {{ form.assignee(class="form-control") }}
-                {% for error in form.assignee.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
-            </div>
-            {% else %}
-                {{ form.assignee(hidden=True) }}
-                <p><strong>Assignee:</strong> {{ ticket.assignee.username}}</p>
-            {% endif %}
-            <div>
-                {{ form.description.label(class="form-label") }}
-                {{ form.description(class="form-control") }} 
-                {% for error in form.description.errors %}
-                <span>{{ error }}</span>
-                {% endfor %}
-            </div>
-            <div>
-                {{ form.priority.label(class="form-label") }}
-                {{ form.priority(class="form-control") }} 
-                {% for error in form.priority.errors %}
-                <span>{{ error }}</span>
-                {% endfor %}
-            </div>
-            {{ form.submit }}
-            <a href="{{ url_for('tickets.view_ticket', id=ticket.id) }}">Cancel</a>
-        </form>
-    </body>
-</html>
+{% block content %}
+<h1>Edit Ticket</h1>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.title.label(class="form-label") }}
+        {{ form.title(class="form-control") }} 
+        {% for error in form.title.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+    </div>
+    {% if current_user.admin %}
+    <div>
+        {{ form.status.label(class="form-label") }}
+        {{ form.status(class="form-control") }} 
+        {% for error in form.status.errors %}
+            <span>{{ error }}</span>
+        {% endfor %}
+    </div>
+    {% else %}
+        {{ form.status(hidden=True) }}
+        <p><strong>Status:</strong> {{ ticket.status }}</p>
+    {% endif %}
+    {% if current_user.admin %}
+    <div>
+        {{ form.assignee.label(class="form-label") }}
+        {{ form.assignee(class="form-control") }}
+        {% for error in form.assignee.errors %}
+            <span>{{ error }}</span>
+        {% endfor %}
+    </div>
+    {% else %}
+        {{ form.assignee(hidden=True) }}
+        <p><strong>Assignee:</strong> {{ ticket.assignee.username}}</p>
+    {% endif %}
+    <div>
+        {{ form.description.label(class="form-label") }}
+        {{ form.description(class="form-control") }} 
+        {% for error in form.description.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.priority.label(class="form-label") }}
+        {{ form.priority(class="form-control") }} 
+        {% for error in form.priority.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+    </div>
+    {{ form.submit }}
+    <a href="{{ url_for('tickets.view_ticket', id=ticket.id) }}">Cancel</a>
+</form>
+{% endblock %}
 

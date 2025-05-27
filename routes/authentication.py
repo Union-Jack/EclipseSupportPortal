@@ -22,7 +22,7 @@ def login():
                 if user:
                         if bcrypt.check_password_hash(user.password, form.password.data):
                                 login_user(user)
-                                return redirect(url_for('auth.dashboard'))
+                                return redirect(url_for('tickets.homepage'))
 
         return render_template('login.html', form=form)
 
@@ -41,11 +41,6 @@ def register():
                 return redirect(url_for('auth.login'))
 
         return render_template('register.html', form=form)
-
-@auth.route('/dashboard', methods=['GET', 'POST'])
-@login_required
-def dashboard():
-        return render_template('dashboard.html') 
 
 @auth.route('/logout', methods=['GET', 'POST'])  
 @login_required

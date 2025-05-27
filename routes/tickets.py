@@ -10,14 +10,14 @@ from datetime import datetime
 
 tickets = Blueprint('tickets', __name__) 
 
-@tickets.route('/tickets')
+@tickets.route('/homepage')
 @login_required
-def tickets_list():
+def homepage():
     if current_user.admin:
         tickets = TicketModel.query.order_by(TicketModel.date_created.desc()).all()
     else:
         tickets = TicketModel.query.filter_by(author=current_user).order_by(TicketModel.date_created.desc()).all()
-    return render_template('tickets.html', tickets=tickets)
+    return render_template('homepage.html', tickets=tickets)
 
 
 @tickets.route('/tickets/create', methods=['GET', 'POST'])
@@ -45,7 +45,7 @@ def create_ticket():
         db.session.add(ticket)
         db.session.commit()
 
-        return redirect(url_for('tickets.tickets_list'))
+        return redirect(url_for('tickets.homepage'))
 
     else: 
         print(form.errors)
@@ -99,13 +99,13 @@ def edit_ticket(id):
 def delete_ticket(id):
     #Need this so that regular users can't navigate to the delete url manually to delete tickets
     if not current_user.admin:
-        return redirect(url_for('tickets.tickets_list'))
+        return redirect(url_for('tickets.homepage'))
 
 
     ticket = TicketModel.query.get_or_404(id)
     db.session.delete(ticket)
     db.session.commit()
-    return redirect(url_for('tickets.tickets_list'))
+    return redirect(url_for('tickets.homepage'))
 
 @tickets.route('/tickets/<int:ticket_id>/comment', methods=['POST'])
 @login_required

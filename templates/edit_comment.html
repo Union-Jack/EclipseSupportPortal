@@ -1,3 +1,7 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
 <h3>Edit Comment</h3>
 
 <form method="POST">
@@ -12,3 +16,4 @@
     {{ form.submit }}
     <a href="{{ url_for('tickets.view_ticket', id=ticket_id) }}">Cancel</a>
 </form>
+{% endblock %}

@@ -1,0 +1,18 @@
+.navbar {
+    background-color: #4f6d84;
+}
+
+.nav-link {
+    color: white !important; 
+}
+.nav-link:hover {
+    text-decoration: underline !important; 
+}
+
+.nav-link.text-danger {
+    color: #c0c0c0 !important;
+}
+
+.nav-link.text-danger:hover {
+    color: #ffffff !important; 
+}
