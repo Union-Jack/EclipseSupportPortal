@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
-
 {% block content %}
-<h3>Edit Comment</h3>
-
-<form method="POST">
-    {{ form.hidden_tag() }}
-    <div>
-        {{ form.content.label(class="form-label") }}
-        {{ form.content(class="form-control", rows="3") }}
-        {% for error in form.content.errors %}
-            <span>{{ error }}</span>
-        {% endfor %}
+<div class="ticket-container">
+    <div class="card">
+        <h4 class="card-header">Edit Comment</h4>
+        <form class="card-body" method="POST">
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.content(class="form-control", rows="3", placeholder="Type your comment here...") }}
+                {% for error in form.content.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="edit-footer">
+                <a href="{{ url_for('tickets.view_ticket', id=ticket_id) }}"  class="btn ticket-btn-cancel">Cancel</a>
+                {{ form.submit (class="btn ticket-btn-add") }}
+            </div>
+        </form>
     </div>
-    {{ form.submit }}
-    <a href="{{ url_for('tickets.view_ticket', id=ticket_id) }}">Cancel</a>
-</form>
-{% endblock %}
+</div>
+{% endblock %}z

@@ -27,12 +27,6 @@ body {
     flex-direction: column;
 }
 
-.card-header {
-    background-color: #658BA8; 
-    color: #FFFFFF; 
-
-}
-
 .ticket-details {
     display: flex;
     flex-direction: column;
@@ -184,6 +178,8 @@ body {
     justify-content: space-between;
     align-items: center; 
     padding: 15px;
+    background-color: #4F6D84; 
+    color: #FFFFFF; 
 }
 
 .comment-card {
@@ -222,6 +218,7 @@ body {
     align-items: center; 
     width: 100%;
     margin: 10px auto;
+    flex-wrap: wrap;
 }
 
 .dropdown-group {
@@ -234,7 +231,14 @@ body {
 .dropdown-group label {
     text-align: right;
 }
-.edit-ticket-footer {
+
+.title-group {
+    display: flex;
+    align-items: center; 
+    gap: 23px; 
+}
+
+.edit-footer {
     display: flex;
     justify-content: space-between; 
     align-items: center; 
