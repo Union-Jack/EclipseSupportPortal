@@ -235,7 +235,7 @@ body {
 .title-group {
     display: flex;
     align-items: center; 
-    gap: 23px; 
+    gap: 30px; 
 }
 
 .edit-footer {
@@ -263,7 +263,5 @@ body {
     background-color: #bb4743;
     color: #ffffff;
 }
-
-
 
 

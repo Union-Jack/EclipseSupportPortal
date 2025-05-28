@@ -1,43 +1,49 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
-
 {% block content %}
-<h1>Create New Ticket</h1>
-<form method="POST">
-    {{ form.hidden_tag() }} 
-    <div>
-        {{ form.title.label(class="form-label") }}
-        {{ form.title(class="form-control") }} 
-        {% for error in form.title.errors %}
-        <span>{{ error }}</span>
-        {% endfor %}
-    </div>
-    {% if current_user.admin %}
-    <div>
-        {{ form.assignee.label(class="form-label") }}
-        {{ form.assignee(class="form-control") }}
-        {% for error in form.assignee.errors %}
+<div class="ticket-container">
+    <div class="card">
+    <h4 class="card-header">Create New Ticket</h4>
+    <form class="card-body" method="POST">
+        {{ form.hidden_tag() }} 
+        <div class="title-group">
+            <label class="form-label" for="title">Title:</label>
+            {{ form.title(class="form-control", id="title") }} 
+            {% for error in form.title.errors %}
             <span>{{ error }}</span>
-        {% endfor %}
+            {% endfor %}
+        </div>
+        <div class="dropdown-fields">    
+            <div class="dropdown-group">
+                <label for="priority">Priority:</label>
+                {{ form.priority(class="form-select", id="priority") }} 
+                {% for error in form.priority.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>       
+            {% if current_user.admin %}
+            <div class="dropdown-group">
+                <label for="assignee">Assignee:</label>
+                {{ form.assignee(class="form-select", id="assignee") }}
+                {% for error in form.assignee.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+                {{ form.assignee(hidden=True) }}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.description(class="form-control", rows="10" , placeholder="Type your description here...") }} 
+            {% for error in form.description.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="edit-footer">
+            <a href="{{ url_for('tickets.homepage') }}"  class="btn ticket-btn-cancel">Cancel</a>
+            {{ form.submit (class="btn ticket-btn-add") }}
+        </div>
+    </form>
     </div>
-    {% else %}
-        {{ form.assignee(hidden=True) }}
-    {% endif %}
-    <div>
-        {{ form.description.label(class="form-label") }} 
-        {{ form.description(class="form-control", rows="5") }} 
-        {% for error in form.description.errors %}
-        <span>{{ error }}</span>
-        {% endfor %}
-    </div>
-    <div>
-        {{ form.priority.label(class="form-label") }} 
-        {{ form.priority(class="form-select") }} 
-        {% for error in form.priority.errors %}
-        <span>{{ error }}</span>
-        {% endfor %}
-    </div>
-    {{ form.submit }}
-    <a href="{{ url_for('tickets.homepage') }}">Cancel</a>
-</form>
+</div>
 {% endblock %}

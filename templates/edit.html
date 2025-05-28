@@ -13,37 +13,35 @@
                 {% endfor %}
             </div>
             <div class="dropdown-fields">
-                {% if current_user.admin %}
                 <div class="dropdown-group">
-                    <label for="status">Status:</label>
-                    {{ form.status(class="form-select", id="status") }} 
-                    {% for error in form.status.errors %}
+                    <label for="priority">Priority:</label>
+                    {{ form.priority(class="form-select", id="priority") }}
+                    {% for error in form.priority.errors %}
                         <span>{{ error }}</span>
                     {% endfor %}
+                </div>
+                {% if current_user.admin %}
+                <div class="dropdown-group">
+                        <label for="status">Status:</label>
+                        {{ form.status(class="form-select", id="status") }}
+                        {% for error in form.status.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
                 </div>
                 {% else %}
                     {{ form.status(hidden=True) }}
-                    <p>Status: {{ ticket.status }}</p>
                 {% endif %}
                 {% if current_user.admin %}
                 <div class="dropdown-group">
-                    <label for="assignee">Assignee:</label>
-                    {{ form.assignee(class="form-select", id="assignee") }}
-                    {% for error in form.assignee.errors %}
-                        <span>{{ error }}</span>
-                    {% endfor %}
+                        <label for="assignee">Assignee:</label>
+                        {{ form.assignee(class="form-select", id="assignee") }}
+                        {% for error in form.assignee.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
                 </div>
                 {% else %}
                     {{ form.assignee(hidden=True) }}
-                    <p>Assignee: {{ ticket.assignee.username}}</p>
                 {% endif %}
-                <div class="dropdown-group">
-                    <label for="priority">Priority:</label>
-                    {{ form.priority(class="form-select", id="priority") }} 
-                    {% for error in form.priority.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
             </div>
             <div>
                 {{ form.description(class="form-control", rows="10" , placeholder="Type your description here...") }} 

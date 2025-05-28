@@ -9,8 +9,8 @@
         </div>
         <div class="ticket-details">
             <div class="ticket-row">
-                <div class="ticket-item"> Status: {{ ticket.status }}</div>
                 <div class="ticket-item"> Priority: {{ ticket.priority }}</div>
+                <div class="ticket-item"> Status: {{ ticket.status }}</div>
             </div>
             <div class="ticket-row">
                 <div class="ticket-item"> Assignee: {{ ticket.assignee.username }}</div>
@@ -22,7 +22,7 @@
             </div>
         </div>
             <div class="ticket-actions">
-                <a href="{{ url_for('tickets.homepage') }}" class="btn ticket-btn-view">Back</a>
+                <a href="{{ url_for('tickets.homepage') }}" class="btn ticket-btn-view">Home</a>
                 <a href="{{ url_for('tickets.edit_ticket', id=ticket.id) }}" class="btn ticket-btn-edit">Edit</a>
                 {% if current_user.admin %}
                 <a href="{{ url_for('tickets.delete_ticket', id=ticket.id) }}" class="btn ticket-btn-delete"
