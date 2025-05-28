@@ -4,7 +4,7 @@
 <div class="homepage-container">
     <div class="tickets-header">
         <h1>Tickets</h1>
-        <a href="{{ url_for('tickets.create_ticket') }}" class="btn ticket-btn-primary">Create Ticket</a>
+        <a href="{{ url_for('tickets.create_ticket') }}" class="btn ticket-btn-add">Create Ticket</a>
     </div>
     {% if tickets %}
     <div class="row justify-content-center">
@@ -12,7 +12,7 @@
         <div class="col-12 col-md-12 mb-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{{ ticket.title }}</h5>
+                    <h4 class="card-title">{{ ticket.title }}</h4>
                     <p class="card-text">{{ ticket.description }}</p>
                 </div>
                 <div class="ticket-details">
@@ -29,7 +29,7 @@
                         <div class="ticket-item"> Updated: {{ ticket.date_updated.strftime('%d %b %Y %H:%M') }}</div>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="ticket-actions">
                     <a href="{{ url_for('tickets.view_ticket', id=ticket.id) }}" class="btn ticket-btn-view">View</a>
                     <a href="{{ url_for('tickets.edit_ticket', id=ticket.id) }}" class="btn ticket-btn-edit">Edit</a>
                     {% if current_user.admin %}
@@ -41,7 +41,7 @@
         </div>
         {% endfor %}
         <div class="tickets-footer">
-            <nav aria-label="Ticket pagination">
+            <nav>
                 <ul class="pagination">
                     {% if tickets.has_prev %}
                     <li class="page-item">
