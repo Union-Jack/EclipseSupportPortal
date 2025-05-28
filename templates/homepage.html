@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
 {% block content %}
-<div class="homepage-container">
+<div class="ticket-container">
     <div class="tickets-header">
         <h1>Tickets</h1>
         <a href="{{ url_for('tickets.create_ticket') }}" class="btn ticket-btn-add">Create Ticket</a>
@@ -11,8 +11,8 @@
         {%for ticket in tickets.items %}
         <div class="col-12 col-md-12 mb-4">
             <div class="card">
+                <h4 class="card-header">{{ ticket.title }}</h4>
                 <div class="card-body">
-                    <h4 class="card-title">{{ ticket.title }}</h4>
                     <p class="card-text">{{ ticket.description }}</p>
                 </div>
                 <div class="ticket-details">

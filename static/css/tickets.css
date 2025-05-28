@@ -1,3 +1,7 @@
+body {
+    background-color: #FAFAFA; 
+}
+
 .navbar {
     background-color: #4f6d84;
 }
@@ -21,6 +25,12 @@
     width: 100%;
     margin: auto; 
     flex-direction: column;
+}
+
+.card-header {
+    background-color: #658BA8; 
+    color: #FFFFFF; 
+
 }
 
 .ticket-details {
@@ -48,7 +58,7 @@
     text-align: left; 
 }
 
-.homepage-container {
+.ticket-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -180,7 +190,6 @@
     margin: 5px auto; 
     padding: 10px; 
     border: 1px solid #ddd; 
-    background-color: #fafafa; 
     width: 100%;
  }
 
@@ -205,3 +214,52 @@
     margin: 5px auto; 
     width: 100%;
  }
+
+.dropdown-fields {
+    display: flex;
+    gap: 20px; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%;
+    margin: 10px auto;
+}
+
+.dropdown-group {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    flex: 1;
+}
+
+.dropdown-group label {
+    text-align: right;
+}
+.edit-ticket-footer {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+    margin: auto; 
+    padding: 5px; 
+}
+
+.ticket-btn-cancel {
+    width: 125px;
+    padding: 8px;
+    margin-top: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #d9534f;
+    border: none;
+    transition: background-color 0.3s ease;
+    color: #ffffff;
+}
+
+.ticket-btn-cancel:hover {
+    background-color: #bb4743;
+    color: #ffffff;
+}
+
+
+
+
