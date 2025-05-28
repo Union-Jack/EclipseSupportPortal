@@ -13,11 +13,15 @@ tickets = Blueprint('tickets', __name__)
 @tickets.route('/homepage')
 @login_required
 def homepage():
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', 5, type=int)
+
     if current_user.admin:
-        tickets = TicketModel.query.order_by(TicketModel.date_created.desc()).all()
+        tickets = TicketModel.query.order_by(TicketModel.date_created.desc()).paginate(page=page, per_page=per_page, error_out=False)
     else:
-        tickets = TicketModel.query.filter_by(author=current_user).order_by(TicketModel.date_created.desc()).all()
-    return render_template('homepage.html', tickets=tickets)
+        tickets = TicketModel.query.filter_by(author=current_user).order_by(TicketModel.date_created.desc()).paginate(page=page, per_page=per_page, error_out=False)
+
+    return render_template('homepage.html', tickets=tickets, per_page=per_page)
 
 
 @tickets.route('/tickets/create', methods=['GET', 'POST'])

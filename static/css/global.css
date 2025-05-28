@@ -19,6 +19,143 @@
 
 .card {
     width: 100%;
-    max-width: 600px; 
     margin: auto; 
+    margin-bottom: 0px
 }
+
+.ticket-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.ticket-row {
+    display: flex;
+    justify-content: space-between; 
+    border-bottom: 1px solid #ddd; 
+    padding: 5px 0;
+}
+
+.ticket-row:first-child {
+    border-top: 2px solid #ddd; 
+    padding-top: 10px; 
+}
+
+.ticket-item {
+    flex: 1;
+    text-align: left; 
+}
+
+.homepage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 875px; 
+    margin: auto;
+}
+
+.tickets-header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+    margin: auto; 
+    padding: 10px; 
+}
+
+.ticket-btn-primary {
+    width: 125px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #9ac767;
+    border: none;
+    transition: background-color 0.3s ease;
+    color: #ffffff;
+}
+
+.ticket-btn-primary:hover {
+    background-color: #8bb35d;
+    color: #ffffff;
+}
+
+.tickets-footer {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+    margin: auto; 
+    padding: 10px; 
+}
+
+.pagination {
+    margin-bottom: 10px; 
+}
+
+.pagination .page-item .page-link {
+    background-color: white; 
+    color: #4f6d84; 
+    border: 1px solid #e9ecef;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #4f6d84;
+    color: white;
+    border: 1px solid #4f6d84;
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: #e9ecef;
+    color: #4f6d84;
+}
+
+.ticket-btn-view {
+    width: 75px;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: #21afda;
+    border: none;
+    transition: background-color 0.3s ease;
+    color: #ffffff;
+}
+
+.ticket-btn-view:hover {
+    background-color: #1e9ec5;
+    color: #ffffff;
+}
+
+.ticket-btn-edit {
+    width: 75px;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: #f5a938;
+    border: none;
+    transition: background-color 0.3s ease;
+    color: #ffffff;
+}
+
+.ticket-btn-edit:hover {
+    background-color: #d89633;
+    color: #ffffff;
+}
+
+.ticket-btn-delete {
+    width: 75px;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: #d9534f;
+    border: none;
+    transition: background-color 0.3s ease;
+    color: #ffffff;
+}
+
+.ticket-btn-delete:hover {
+    background-color: #bb4743;
+    color: #ffffff;
+}
+

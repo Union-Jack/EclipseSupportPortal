@@ -51,7 +51,8 @@
 }
 
 .auth-btn-primary:hover {
-    background-color: #8bb35d
+    background-color: #8bb35d;
+    color: #ffffff;
 }
 
 .invisible-placeholder {
