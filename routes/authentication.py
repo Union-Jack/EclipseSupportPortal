@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, session
 from flask_login import login_required, login_user, logout_user, current_user
 from flask_login import LoginManager
 from models import user_model
@@ -45,4 +45,5 @@ def register():
 @auth.route('/logout', methods=['GET', 'POST'])  
 @login_required
 def logout():
+        session.clear()
         return redirect(url_for('auth.login')) 
