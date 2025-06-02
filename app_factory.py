@@ -1,6 +1,7 @@
 from flask import Flask
 from extensions import db, bcrypt, login_manager
 from models import user_model
+from seed_data import seed_database
 
 def create_app():
     app = Flask(__name__)
@@ -20,7 +21,11 @@ def create_app():
     app.register_blueprint(tickets)
     
     with app.app_context():
+        #Clears all data so the app and starts it with fresh with the seed data
+        #This and the seed data would not be present in a production version however render does not persist sqlite3 db on the free version. 
+        db.drop_all()
         db.create_all()  
+        seed_database() 
         
     return app
 

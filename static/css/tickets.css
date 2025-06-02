@@ -55,8 +55,8 @@ body {
 .ticket-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    max-width: 875px; 
+    align-items: stretch;
+    width: 900px; 
     margin: auto;
 }
 
