@@ -19,10 +19,12 @@ def login():
         form = LoginForm()
         if form.validate_on_submit():
                 user = UserModel.query.filter_by(username = form.username.data).first()
-                if user:
-                        if bcrypt.check_password_hash(user.password, form.password.data):
-                                login_user(user)
-                                return redirect(url_for('tickets.homepage'))
+                if user and bcrypt.check_password_hash(user.password, form.password.data):
+                        login_user(user)
+                        return redirect(url_for('tickets.homepage'))
+                else:
+                        flash("Incorrect username or password. Please try again.", "danger") 
+
 
         return render_template('login.html', form=form)
 
@@ -31,14 +33,18 @@ def register():
         form = RegisterForm()
         if form.validate_on_submit():
                 hashed_password = bcrypt.generate_password_hash(form.password.data)
-                new_user = UserModel(username=form.username.data, password=hashed_password, admin=form.admin.data)
-                db.session.add(new_user)
-                
+                new_user = UserModel(username=form.username.data, password=hashed_password, admin=form.admin.data)              
+                db.session.add(new_user)             
                 db.session.commit()
                 
                 flash("Account created successfully.", "success")
 
                 return redirect(url_for('auth.login'))
+        
+        for field, errors in form.errors.items():
+                for error in errors:
+                        flash(f"{field.capitalize()}: {error}", "danger")  
+
 
         return render_template('register.html', form=form)
 

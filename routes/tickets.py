@@ -7,6 +7,7 @@ from models.ticket_model import TicketModel
 from models.comment_model import CommentModel
 from models.user_model import UserModel
 from datetime import datetime
+from flask import flash
 
 tickets = Blueprint('tickets', __name__) 
 
@@ -51,9 +52,10 @@ def create_ticket():
 
         return redirect(url_for('tickets.homepage'))
 
-    else: 
-        print(form.errors)
-
+    for field, errors in form.errors.items():
+        for error in errors:
+            flash(f"{field.capitalize()}: {error}", "danger") 
+    
     return render_template('create.html', form=form)
 
 @tickets.route('/tickets/<int:id>')
@@ -95,6 +97,10 @@ def edit_ticket(id):
         form.priority.data = ticket.priority
         if current_user.admin:
             form.assignee.data = ticket.assignee_id
+
+    for field, errors in form.errors.items():
+        for error in errors:
+            flash(f"{field.capitalize()}: {error}", "danger") 
 
     return render_template('edit.html', form=form, ticket=ticket)
 
