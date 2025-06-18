@@ -31,6 +31,9 @@ def create_app():
 
 @login_manager.user_loader
 def load_user(user_id):
-    return user_model.UserModel.query.get(int(user_id))
+    with db.session() as session:
+        user = session.get(user_model.UserModel, int(user_id)) 
+
+    return user
 
 

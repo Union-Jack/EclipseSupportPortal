@@ -18,5 +18,5 @@ class TicketForm(FlaskForm):
 
     def validate_title(self, field):
         if not re.match(r'^(?=.*[A-Za-z])[A-Za-z\s]+$', field.data):  
-            raise ValidationError("Title must contain at least one letter and can only include letters and spaces.")
+            raise ValidationError("Title must contain at least three letters and can only include letters and spaces.")
 

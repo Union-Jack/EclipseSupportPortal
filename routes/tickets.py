@@ -7,7 +7,7 @@ from models.ticket_model import TicketModel
 from models.comment_model import CommentModel
 from models.user_model import UserModel
 from datetime import datetime
-from flask import flash
+from flask import flash, abort
 
 tickets = Blueprint('tickets', __name__) 
 
@@ -62,6 +62,10 @@ def create_ticket():
 @login_required
 def view_ticket(id):
     ticket = TicketModel.query.get_or_404(id)
+    
+    if not current_user.admin and ticket.author_id != current_user.id:
+        abort(403) 
+
     form = CommentForm() 
     return render_template('view.html', ticket=ticket, form=form)
 
@@ -69,6 +73,10 @@ def view_ticket(id):
 @login_required
 def edit_ticket(id):
     ticket = TicketModel.query.get_or_404(id)
+
+    if not current_user.admin and ticket.author_id != current_user.id:
+        abort(403)
+
     form = TicketForm()
 
     if current_user.admin:
@@ -104,15 +112,15 @@ def edit_ticket(id):
 
     return render_template('edit.html', form=form, ticket=ticket)
 
-@tickets.route('/tickets/<int:id>/delete', methods=['GET'])
+@tickets.route('/tickets/<int:id>/delete', methods=['POST'])
 @login_required
 def delete_ticket(id):
-    #Need this so that regular users can't navigate to the delete url manually to delete tickets
-    if not current_user.admin:
-        return redirect(url_for('tickets.homepage'))
-
-
     ticket = TicketModel.query.get_or_404(id)
+
+    # Prevents normal users from deleting tickets
+    if not current_user.admin:
+        abort(403)
+
     db.session.delete(ticket)
     db.session.commit()
     return redirect(url_for('tickets.homepage'))
@@ -139,6 +147,9 @@ def add_comment(ticket_id):
 def edit_comment(ticket_id, comment_id):
     comment = CommentModel.query.get_or_404(comment_id)
     
+    if comment.author_id != current_user.id:
+        abort(403)
+
     if comment.author != current_user:
         flash("You can only edit your own comments.", "danger")
         return redirect(url_for('tickets.view_ticket', id=ticket_id))
