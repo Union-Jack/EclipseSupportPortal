@@ -1,7 +1,7 @@
 from conftest import login
 
 def test_admin_create_ticket_navigation(test_client, test_admin):
-    #Arrage
+    #Arrange
     login(test_client, test_admin["username"], test_admin["password"])
     
     #Act
@@ -12,7 +12,7 @@ def test_admin_create_ticket_navigation(test_client, test_admin):
     assert response.request.path == "/tickets/create"
 
 def test_user_create_ticket_navigation(test_client, test_user):
-    #Arrage
+    #Arrange
     login(test_client, test_user["username"], test_user["password"])
 
     #Act

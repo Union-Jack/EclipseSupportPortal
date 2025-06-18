@@ -3,6 +3,7 @@ from extensions import db
 from datetime import datetime
 from models.comment_model import CommentModel
 
+#Represents the user table in the database
 class UserModel(db.Model, UserMixin):
         __tablename__ = "user"
         id = db.Column(db.Integer, primary_key=True)

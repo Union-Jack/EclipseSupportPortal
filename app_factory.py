@@ -3,6 +3,7 @@ from extensions import db, bcrypt, login_manager
 from models import user_model
 from seed_data import seed_database
 
+# Creates and configures the Flask app instance with config, login manager, and blueprints.
 def create_app():
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///EclipseSupportPortal.db'
@@ -29,6 +30,7 @@ def create_app():
         
     return app
 
+# Tells Flask-Login how to fetch a user from the database.
 @login_manager.user_loader
 def load_user(user_id):
     with db.session() as session:

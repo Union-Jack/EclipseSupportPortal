@@ -1,6 +1,7 @@
 from extensions import db
 from datetime import datetime
 
+#Represents the comment table in the database
 class CommentModel(db.Model):
     __tablename__ = "comment"
     id = db.Column(db.Integer, primary_key=True)

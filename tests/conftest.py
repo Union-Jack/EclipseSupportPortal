@@ -81,20 +81,6 @@ def user_ticket(test_user):
         session.commit()  
         return {"ticket_id": ticket.id}
 
-#Seed a comment created by a user
-@pytest.fixture
-def user_comment(test_user, user_ticket):
-    with db.session() as session:
-        comment = CommentModel(
-            content="This is a user test comment.",
-            author_id=test_user["user_id"],
-            ticket_id=user_ticket["ticket_id"]
-        )
-        session.add(comment)
-        session.commit()
-
-        return {"comment_id": comment.id}
-
 #Seed a test ticket created by an admin
 @pytest.fixture
 def admin_comment(test_admin, admin_ticket):
@@ -103,6 +89,20 @@ def admin_comment(test_admin, admin_ticket):
             content="This is an admin test comment.",
             author_id=test_admin["user_id"],
             ticket_id=admin_ticket["ticket_id"]
+        )
+        session.add(comment)
+        session.commit()
+
+        return {"comment_id": comment.id}
+
+#Seed a comment created by a user
+@pytest.fixture
+def user_comment(test_user, user_ticket):
+    with db.session() as session:
+        comment = CommentModel(
+            content="This is a user test comment.",
+            author_id=test_user["user_id"],
+            ticket_id=user_ticket["ticket_id"]
         )
         session.add(comment)
         session.commit()

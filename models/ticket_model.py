@@ -1,7 +1,7 @@
 from extensions import db
 from datetime import datetime
 
-
+#Represents the ticket table in the database
 class TicketModel(db.Model):
     __tablename__ = "ticket"
     id = db.Column(db.Integer, primary_key=True)

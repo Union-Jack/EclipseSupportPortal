@@ -3,6 +3,7 @@ from wtforms import StringField, PasswordField, SubmitField, TextAreaField, Sele
 from wtforms.validators import InputRequired, Length, ValidationError, DataRequired
 import re
 
+# WTForm for creating and editing tickets and validating tickets
 class TicketForm(FlaskForm):
     title = StringField(validators=[DataRequired(),
         Length(min=3, max=100)])
