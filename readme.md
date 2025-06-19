@@ -13,19 +13,19 @@ This project is Flask based web application for managing IT support desk tickets
     Ensure you have installed Python and Git.
 
 2.  **Installation:** 
-    In git Bash:
-    1. git clone https://github.com/Union-Jack/EclipseSupportPortal.git
-    2. cd EclipseSupportPortal
-    3. py -m venv venv
-    4. source venv/Scripts/activate
-    5. pip install -r requirements.txt
+In git Bash:
+1. git clone https://github.com/Union-Jack/EclipseSupportPortal.git
+2. cd EclipseSupportPortal
+3. py -m venv venv
+4. source venv/Scripts/activate
+5. pip install -r requirements.txt
 
 3.  **Usage:** 
-    Running the project:
-    flask run 
+Running the project:
+flask run 
 
-    Testing the project:
-    pytest tests/
+Testing the project:
+pytest tests/
 
 ## File Structure
     project-name/
