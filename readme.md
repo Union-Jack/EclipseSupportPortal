@@ -48,6 +48,54 @@ To run the application and tests from the Visual Studio Code terminal you may ne
 2. Ctrl+Shift+P enter Python: Select Interpreter 
 3. Select the interpriter with the route .\venv\Scripts\python.exe
 
+## Seed Data
+To demonstrate functionality, the application currently wipes all data on startup and before seeding new data from the seed_data.py class.
+To persist the data simply remove db.drop_all() and seed_database() from app_factory.py
+
+The seeded data is currently as follows:
+##### User Seed Data
+| Role  | Username              | Password        |
+|-------|------------------------|-----------------|
+| Admin | EclipseManager_Jack    | Eclipse@123!     |
+| Admin | EclipseSupport_Pete    | Management#987   |
+| Admin | EclipseSupport_Lucy    | Support!678      |
+| User  | MediHire_John          | Health#321!      |
+| User  | CareTalent_Sarah       | CareRecruit@25   |
+| User  | HealthBridge_Mark      | NurseXyz!        |
+| User  | BuildForce_Mike        | Constuct123      |
+| User  | TradeSkills_Emma       | TradeHire@2025   |
+| User  | EduTalent_Lisa         | TeachHire456!    |
+| User  | UniHire_Daniel         | UniRecruit@24    |
+
+##### Ticket Seed Data
+| Ticket ID | Title                              | Priority  | Status       | Author             | Assignee              |
+|-----------|------------------------------------|-----------|--------------|---------------------|------------------------|
+| 1         | Issue with Login                   | High      | Open         | HealthBridge_Mark   | EclipseSupport_Pete    |
+| 2         | Email Notifications Not Working    | Medium    | Pending      | TradeSkills_Emma    | EclipseManager_Jack    |
+| 3         | Database Connection Issue          | Critical  | In Progress  | CareTalent_Sarah    | EclipseSupport_Lucy    |
+| 4         | UI Glitch on Mobile                | Low       | Open         | MediHire_John       | EclipseManager_Jack    |
+| 5         | Access Denied Error                | High      | Resolved     | CareTalent_Sarah    | EclipseSupport_Lucy    |
+| 6         | Integration Issue                  | Medium    | Pending      | HealthBridge_Mark   | EclipseSupport_Pete    |
+| 7         | Server Downtime                    | Critical  | In Progress  | BuildForce_Mike     | EclipseManager_Jack    |
+| 8         | Ticket Assignment Bug              | High      | Open         | TradeSkills_Emma    | Unassigned             |
+| 9         | Performance Lag                    | Medium    | In Progress  | EduTalent_Lisa      | EclipseManager_Jack    |
+| 10        | User Profile Updates Not Saving    | Low       | Open         | UniHire_Daniel      | Unassigned             |
+
+##### Comment Seed Data
+| Ticket ID | Author              | Comment Snippet                                                              |
+|-----------|---------------------|------------------------------------------------------------------------------|
+| 1         | EclipseSupport_Pete | “Looks like a password caching issue...”                                     |
+| 1         | HealthBridge_Mark   | “I’ve cleared saved credentials and tried again…”                            |
+| 2         | EclipseManager_Jack | “I've checked the email server logs…”                                        |
+| 3         | EclipseSupport_Lucy | “I've confirmed that this is a database timeout.”                            |
+| 4         | EclipseManager_Jack | “Confirmed: Mobile UI breaks on Safari…”                                     |
+| 5         | EclipseSupport_Lucy | “Can you please provide some additional clarification…”                      |
+| 5         | CareTalent_Sarah    | "It’s specifically the create candidate and create client functionality."    |
+| 6         | EclipseSupport_Pete | "Investigating API authentication logs now."                                 |
+| 7         | EclipseManager_Jack | "Investigating downtime reported at peak hours…”                             |
+| 9         | EclipseManager_Jack | "Confirmed: High latency caused by large dataset queries."                   |
+
+
 ## Contributing
 If you would like to contribute, please:
 1. Fork the repository

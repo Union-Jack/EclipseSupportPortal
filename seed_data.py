@@ -37,12 +37,12 @@ def seed_database():
             {"ticket_id": 1, "author_id": 1, "content": "This looks like a password caching issue. Can you clear saved credentials and try again?"},
             {"ticket_id": 1, "author_id": 6, "content": "I've cleared the saved credentials and tried again, I am still unable to log in."},
             {"ticket_id": 2, "author_id": 2, "content": "I've checked the email server logs—there's a delay in outgoing mail processing."},
-            {"ticket_id": 3, "author_id": 3, "content": "I've confirmed that this is a database timeout before."},
+            {"ticket_id": 3, "author_id": 3, "content": "I've confirmed that this is a database timeout."},
             {"ticket_id": 4, "author_id": 2, "content": "Confirmed: Mobile UI breaks on Safari. Will need a CSS fix."},
-            {"ticket_id": 5, "author_id": 3, "content": "Can you please provide some addtional clarification on the functionality non-admins cannot access."},
-            {"ticket_id": 5, "author_id": 5, "content": "Its specifically the create candidate and create client functionality."},
+            {"ticket_id": 5, "author_id": 3, "content": "Can you please provide some additional clarification on the functionality non-admins cannot access."},
+            {"ticket_id": 5, "author_id": 5, "content": "It's specifically the create candidate and create client functionality."},
             {"ticket_id": 6, "author_id": 1, "content": "Investigating API authentication logs now."},
-            {"ticket_id": 7, "author_id": 2, "content": "Investigating reported downtime reported at peak hours. Could be a load balancing issue."},
+            {"ticket_id": 7, "author_id": 2, "content": "Investigating downtime reported at peak hours. Could be a load balancing issue."},
             {"ticket_id": 9, "author_id": 2, "content": "Confirmed: High latency caused by large dataset queries."}
         ]
 
