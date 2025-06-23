@@ -1,3 +1,4 @@
+#Routes were implemented following the Flask-Login documentation and a 'Learn Flask Login' tutorial (Flask-Login, no date)(Neupane, 2021).
 from flask import Blueprint, render_template, redirect, url_for, request
 from flask_login import login_required, current_user
 from extensions import db

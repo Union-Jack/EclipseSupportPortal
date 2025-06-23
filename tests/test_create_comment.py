@@ -1,3 +1,4 @@
+# Tests were written follwing the 'Testing Flask Applications' Flask documentation (Flask, no date).
 from conftest import login
 
 def test_user_can_create_comment(test_client, test_user, user_ticket):

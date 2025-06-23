@@ -1,3 +1,4 @@
+# Tests were written follwing the 'Testing Flask Applications' Flask documentation (Flask, no date).
 from conftest import login
 
 def test_admin_can_delete_ticket_navigation(test_client, test_admin, user_ticket):

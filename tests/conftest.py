@@ -1,3 +1,4 @@
+# Tests were written follwing the 'Testing Flask Applications' Flask documentation (Flask, no date).
 import pytest
 import sys
 import os

@@ -50,7 +50,7 @@ To run the application and tests from the Visual Studio Code terminal you may ne
 
 ## Seed Data
 To demonstrate functionality, the application currently wipes all data on startup and before seeding new data from the seed_data.py class.
-To persist the data simply remove db.drop_all() and seed_database() from app_factory.py
+To persist data, simply remove db.drop_all() and seed_database() from app_factory.py
 
 The seeded data is currently as follows:
 ##### User Seed Data
@@ -94,15 +94,6 @@ The seeded data is currently as follows:
 | 6         | EclipseSupport_Pete | "Investigating API authentication logs now."                                 |
 | 7         | EclipseManager_Jack | "Investigating downtime reported at peak hours…”                             |
 | 9         | EclipseManager_Jack | "Confirmed: High latency caused by large dataset queries."                   |
-
-
-## Contributing
-If you would like to contribute, please:
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature-branch`)
-3. Make your changes and commit them
-4. Push to your fork (`git push origin feature-branch`)
-5. Open a pull request with a clear description
 
 ## Contact
 For questions or issues, please contact me at jack-summerville@hotmail.co.uk.

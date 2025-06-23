@@ -1,3 +1,4 @@
+# Tests were written follwing the 'Testing Flask Applications' Flask documentation (Flask, no date).
 def test_login_success_redirect(test_client, test_user):
     #Arrange, Act
     response = test_client.post('/login', data={

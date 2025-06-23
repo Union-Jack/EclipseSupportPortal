@@ -1,3 +1,4 @@
+# Tests were written follwing the 'Testing Flask Applications' Flask documentation (Flask, no date).
 import html
 
 def test_registration_success(test_client):

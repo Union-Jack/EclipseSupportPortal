@@ -1,3 +1,4 @@
+#Forms were created using the guidace of a 'Learn Flask Login' tutorial and custom vaildaton was added using regex (Neupane, 2021)(UIBakery, no date)
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import InputRequired, Length, ValidationError
