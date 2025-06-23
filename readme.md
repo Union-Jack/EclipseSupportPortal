@@ -40,7 +40,7 @@ pytest tests/
     ├── requirements.txt       # Python dependencies
     ├── readme.md              # Project documentation
     ├── references.md          # Script to populate the database with initial seed data
-    ├── seed_data.py           # List of sources cited within the code.
+    ├── seed_data.py           # List of sources cited within the code
     └── app.py                 # Entry point for running the app
 
 ## Notes
@@ -57,8 +57,8 @@ The seeded data is currently as follows:
 ##### User Seed Data
 | Role  | Username               | Password         |
 |-------|------------------------|------------------|
-| Admin | EclipseManager_Jack    | Eclipse@123!     |
-| Admin | EclipseSupport_Pete    | Management#987   |
+| Admin | EclipseManager_Jack    | Management#987   |
+| Admin | EclipseSupport_Pete    | Eclipse@123!     |
 | Admin | EclipseSupport_Lucy    | Support!678      |
 | User  | MediHire_John          | Health#321!      |
 | User  | CareTalent_Sarah       | CareRecruit@25   |
