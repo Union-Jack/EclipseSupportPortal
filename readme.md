@@ -39,7 +39,8 @@ pytest tests/
     ├── tests/                 # Unit and integration tests
     ├── requirements.txt       # Python dependencies
     ├── readme.md              # Project documentation
-    ├── seed_data.py           # Script to populate the database with initial seed data
+    ├── references.md          # Script to populate the database with initial seed data
+    ├── seed_data.py           # List of sources cited within the code.
     └── app.py                 # Entry point for running the app
 
 ## Notes
@@ -54,8 +55,8 @@ To persist data, simply remove db.drop_all() and seed_database() from app_factor
 
 The seeded data is currently as follows:
 ##### User Seed Data
-| Role  | Username              | Password        |
-|-------|------------------------|-----------------|
+| Role  | Username               | Password         |
+|-------|------------------------|------------------|
 | Admin | EclipseManager_Jack    | Eclipse@123!     |
 | Admin | EclipseSupport_Pete    | Management#987   |
 | Admin | EclipseSupport_Lucy    | Support!678      |
@@ -68,7 +69,7 @@ The seeded data is currently as follows:
 | User  | UniHire_Daniel         | UniRecruit@24    |
 
 ##### Ticket Seed Data
-| Ticket ID | Title                              | Priority  | Status       | Author             | Assignee              |
+| Ticket ID | Title                              | Priority  | Status       | Author              | Assignee               |
 |-----------|------------------------------------|-----------|--------------|---------------------|------------------------|
 | 1         | Issue with Login                   | High      | Open         | HealthBridge_Mark   | EclipseSupport_Pete    |
 | 2         | Email Notifications Not Working    | Medium    | Pending      | TradeSkills_Emma    | EclipseManager_Jack    |
