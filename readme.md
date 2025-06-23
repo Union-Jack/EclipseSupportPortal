@@ -28,7 +28,7 @@ Testing the project:
 pytest tests/
 
 ## File Structure
-    project-name/
+    EclipseSupportPortal/
     │
     ├── templates/             # Jinja2 templates for HTML rendering
     ├── static/                # Static assets (CSS, JavaScript, images)
@@ -50,8 +50,8 @@ To run the application and tests from the Visual Studio Code terminal you may ne
 3. Select the interpriter with the route .\venv\Scripts\python.exe
 
 ## Seed Data
-To demonstrate functionality, the application currently wipes all data on startup and before seeding new data from the seed_data.py class.
-To persist data, simply remove db.drop_all() and seed_database() from app_factory.py
+To demonstrate functionality, the application currently wipes all data on startup before seeding new data from the seed_data.py class.
+To remove seed data and persist changes, simply remove db.drop_all() and seed_database() from app_factory.py
 
 The seeded data is currently as follows:
 ##### User Seed Data
