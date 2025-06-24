@@ -33,17 +33,17 @@ pytest tests/
 ## File Structure
     EclipseSupportPortal/
     │
-    ├── templates/             # Jinja2 templates for HTML rendering
+    ├── templates/             # HTML files utilising Jinja2 templating.
     ├── static/                # Static assets (CSS, JavaScript, images)
     ├── models/                # SQLAlchemy models (User, Ticket, Comment)
     ├── forms/                 # WTForm classes for user input
-    ├── routes/                # Blueprint route files (auth, tickets, comments)
+    ├── routes/                # Blueprint route files (auth, tickets)
     ├── app_factory.py         # Application factory that sets up the Flask app
-    ├── tests/                 # Unit and integration tests
+    ├── tests/                 # pytest tests
     ├── requirements.txt       # Python dependencies
     ├── readme.md              # Project documentation
-    ├── references.md          # Script to populate the database with initial seed data
-    ├── seed_data.py           # List of sources cited within the code
+    ├── references.md          # List of sources cited within the code 
+    ├── seed_data.py           # Script to populate the database with initial seed data
     └── app.py                 # Entry point for running the app
 
 ## Notes
