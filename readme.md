@@ -1,16 +1,19 @@
 # Eclipse Support Portal Project
-This project is Flask based web application for managing IT support desk tickets.
+Eclipse Support Portal is a Flask-based web application designed to assist IT support ticket management. It allows users to create, view, update, and delete tickets with role-based permissions. The backend uses Flask for routing and authentication, Flask-Login for session handling and SQLAlchemy as the ORM layer. Password encryption is handled  using bcrypt and form inputs are managed and validated through WTForms. On the frontend, the interface is styled with Bootstrap, supported by HTML, CSS, and Jinja2 templating. Data is stored in a SQLite3 database, and the system is tested using Pytest.
 
 ## Features
-- User registration and login
-- Role-based access control (admin vs. user)
-- Create, edit, delete, and view support tickets
-- Commenting system
-- Flask blueprints and form validation
+- **Secure User Registration & Login** – Users can sign up and log in with encrypted credentials using Flask-Login and bcrypt.
+- **Role-Based Access Control (RBAC)** – Admins (support staff) and standard users (clients/internal staff) have access to specific functionality based on their role.
+- **Ticket Lifecycle Management** – Users can perform full CRUD operations on support tickets, with restrictions applied according to user roles.
+- **Commenting System** – Users can create and edit comments within tickets, enabling discussion and clarification between support staff and users.
+- **Modular Codebase with Flask Blueprints** – Structured architecture promotes maintainability and scalability of application components.
+- **Form Validation** – WTForms ensures valid user inputs throughout the application's forms.
+- **Seed Data** – Preloaded, non-sensitive sample data showcases functionality for development and demonstration.
+- **Testing Suite** – Pytest tests ensure the quality and functionality of the application throughout development.  
 
 ## Getting Started
 #### Prerequisites:
-Ensure you have installed Python and Git.
+Ensure you have installed Python 3 and Git.
 
 #### Installation: 
 In git Bash:
